@@ -9,6 +9,14 @@ void diasHoras_eSegundos();
 
 void valoresDivididos_porApostas();
 
+void divisaoInteira();
+
+void descompactarOperacao();
+
+void distanciaPecorrida();
+
+void flutuante_eTypeCast();
+
 //funções:
 
 int main() {
@@ -24,6 +32,34 @@ int main() {
 	// Exercício 04:
 	valoresDivididos_porApostas();
 
+	// Atividade de fixação:
+	// Atividade 01:
+
+	// O professor não específicou o formato de preenchimento da tabela
+	// presente em: https://github.com/JudsonSS/ProgComp/blob/master/Labs/Lab09/Lab09.pdf
+	// Não há uma forma clara definida, como também nenhuma formatação, apenas a instrução: "Responda preenchendo a tabela".
+	// De tal modo, o que restou é a execução literal do que se pede.
+
+	//    | a | b | c |
+	//  1 | 3 |   |   |
+	//  2 |   | 4 |   |
+	//  3 |   |   | 1 |
+	//  4 | 5 |   |   |
+	//  5 |   | 4 |   |
+	//  6 |   | 2 |   |
+
+	// Atividade 02:
+	divisaoInteira();
+
+	// Atividade 03:
+	descompactarOperacao();
+
+	// Atividade 04:
+	distanciaPecorrida();
+
+	// Atividade 05:
+	flutuante_eTypeCast();
+
 }
 
 void calcularInt_comDouble() {
@@ -32,7 +68,7 @@ void calcularInt_comDouble() {
 	std::cout << "Digite o valor x1: "; std::cin >> x1;
 	std::cout << "\nDigite o valor x2: "; std::cin >> x2;
 
-	std::cout << "\nA adicao inteira dos valores e " << int(x1) + int(x2) << "\n\n";
+	std::cout << "\nA adicao inteira dos valores e\' " << int(x1) + int(x2) << "\n\n";
 }
 
 void exibirEmNotacao_eDecimal() {
@@ -56,7 +92,7 @@ void diasHoras_eSegundos() {
 
 	std::cout << "Entre com o numero em segundos: "; std::cin >> segundos;
 
-	// Para fins didáticos, deixarei a operação com o caminho desde de segundos totais até os segundos que restam.
+	// Para fins didáticos, deixarei a operação com o caminho de operações desde de segundos totais até os segundos que restam.
 	std::cout << segundos << "segundos = " << segundos / (60 * 60 * 24) << " dias "
 		<< segundos % (60 * 60 * 24) / (60 * 60) << " horas "
 		<< segundos % (60 * 60 * 24) % (60 * 60) / 60 << " minutos "
@@ -80,7 +116,58 @@ void valoresDivididos_porApostas() {
 	double jogadorA_Premio = premio * participacao_jogador1;
 	double jogadorB_Premio = premio * participacao_jogador2;
 
-	std::cout << "\nO jogador 1 tem direito a R$" << int (jogadorA_Premio);
-	std::cout << "\nO jogador 2 tem direito a R$" << int (jogadorB_Premio);
+	std::cout << "\nO jogador 1 tem direito a R$" << int(jogadorA_Premio);
+	std::cout << "\nO jogador 2 tem direito a R$" << int(jogadorB_Premio);
 
+}
+
+void divisaoInteira() {
+	int x1 = 0, x2 = 0;
+	std::cout << "\nDigite dois números inteiros: "; std::cin >> x1 >> x2;
+
+	std::cout << "O quociente de " << x1 << "/" << x2 << " e " << x1 / x2;
+	std::cout << "O resto da divisao " << x1 << "%" << x2 << " e " << x1 % x2;
+}
+
+void descompactarOperacao() {
+	const int decimal = 100; // Valor constante.
+	float valor = 0;
+	int parteReal = 0, parteDecimal = 0;
+	std::cout << "\nDigite um numero real: "; std::cin >> valor;
+
+	parteReal = int(valor);
+	parteDecimal = int(valor * 10) % decimal;
+	std::cout << "\nA parte real " << parteReal;
+	std::cout << "\nO resto da divisao " << parteDecimal;
+}
+
+void distanciaPecorrida() {
+	const int km_emMetros = 1000;
+	int distancia = 0;
+
+	std::cout << "\nEntre com a distancia percorrida em metros: "; std::cin >> distancia;
+
+	int km = distancia / km_emMetros;
+	int metro = distancia % km_emMetros;
+
+	std::cout << "\n" << distancia << "metros equivalem a " << km << " quilometros e " << metro << " metros. ";
+}
+
+void flutuante_eTypeCast() {
+
+	const int multiplicador = 100;
+	double flutuante = 245.795;
+	int valorInteiro = int(flutuante);
+
+	int resultadoFlutuante = flutuante * multiplicador;
+	int resultado_valorInteiro = valorInteiro * multiplicador;
+
+	std::cout << "\n\nO resultado dos valores de " << flutuante << " e sua parte inteira " << valorInteiro
+		<< "\napos a multiplicacao por 100 e\': "
+		<< "\nFlutuante: " << resultadoFlutuante
+		<< "\nInteiro: " << resultado_valorInteiro;
+
+	std::cout << "\n\nIsso mostra que converter um flutuante em inteiro "
+		<< "\nseja usando Type Cast ou usando ou metodo,"
+		<< "\nfara o valor convertido perder parte de sua informacao. \n\n";
 }
